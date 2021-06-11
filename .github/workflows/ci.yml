@@ -1,29 +1,29 @@
-#FROM https://github.com/horizom/horizom.github.io/blob/master/.github/workflows/main.yml
-name: Build & Deploy
+# #FROM https://github.com/horizom/horizom.github.io/blob/master/.github/workflows/main.yml
+# name: Build & Deploy
 
-on:
-  push:
-    branches:
-      - main # Set a branch name to trigger deployment
+# on:
+#   push:
+#     branches:
+#       - main # Set a branch name to trigger deployment
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: 🚚 Get latest source code
-        uses: actions/checkout@v2
+#     steps:
+#       - name: 🚚 Get latest source code
+#         uses: actions/checkout@v2
 
-      - name: 📦 Install dependencies
-        run: npm install
+#       - name: 📦 Install dependencies
+#         run: npm install
 
-      - name: 🔨 Build project
-        run: npm run build
+#       - name: 🔨 Build project
+#         run: npm run build
 
-      - name: 🚀 Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.TOKEN }}
-          # github_token: ${{ secrets.GITHUB_TOKEN }}
-          # personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          publish_dir: ./build
+#       - name: 🚀 Deploy to gh-pages
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           deploy_key: ${{ secrets.TOKEN }}
+#           # github_token: ${{ secrets.GITHUB_TOKEN }}
+#           # personal_token: ${{ secrets.PERSONAL_TOKEN }}
+#           publish_dir: ./build
