@@ -18,6 +18,7 @@ this guide assumes that you are already using the intro bot
 
 	async start(token: string) {
         //Set the emitters
+        //Emitter must be set before loading any listeners otherwise it will cause errors
 		this.listenerHandler.setEmitters({
 			commandHandler: this.commandHandler,
 		});

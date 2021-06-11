@@ -22,6 +22,12 @@ export class botCommand extends NaticoCommand {
 
 After extending NaticoCommand you need to import it to your commands
 
+:::danger Make sure to import the new extension
+
+If you dont import it the types wont work
+
+:::
+
 ```ts
 import { botCommand } from '../extensions/command.ts';
 export default class listeners extends botCommand {
@@ -38,3 +44,5 @@ export default class listeners extends botCommand {
 	}
 }
 ```
+
+You can find the resulting code [here](https://github.com/naticoo/examplebot/tree/main/extending)
