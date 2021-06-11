@@ -2,13 +2,13 @@
 module.exports = {
   title: 'Natico',
   tagline: 'Natico the all in one discordeno framework',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://naticoo.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'naticoo', // Usually your GitHub org/user name.
-  projectName: 'natico', // Usually your repo name.
+  projectName: 'naticoo.github.io', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'Natico',
@@ -76,7 +76,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/naticoo/framework/edit/master/website/',
+            'https://github.com/naticoo/naticoo.github.io/edit/master/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
