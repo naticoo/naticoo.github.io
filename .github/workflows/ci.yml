@@ -1,53 +1,29 @@
-name: documentation
+#FROM https://github.com/horizom/horizom.github.io/blob/master/.github/workflows/main.yml
+name: Build & Deploy
 
 on:
-  pull_request:
-    branches: [main]
   push:
-    branches: [main]
+    branches:
+      - master # Set a branch name to trigger deployment
 
 jobs:
-  checks:
-    if: github.event_name != 'push'
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: 🚚 Get latest source code
+        uses: actions/checkout@v2
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🔨 Build project
+        run: npm run build
+
+      - name: 🚀 Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          node-version: '12.x'
-      - name: Test Build
-        run: |
-          if [ -e yarn.lock ]; then
-          yarn install --frozen-lockfile
-          elif [ -e package-lock.json ]; then
-          npm ci
-          else
-          npm i
-          fi
-          npm run build
-  gh-release:
-    if: github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - uses: webfactory/ssh-agent@v0.5.0
-        with:
-          ssh-private-key: ${{ secrets.TOKEN }}
-      - name: Release to GitHub Pages
-        env:
-          USE_SSH: true
-          GIT_USER: git
-        run: |
-          git config --global user.email "72335827+SkyBlockDev@users.noreply.github.com"
-          git config --global user.name "SkyBlockDev"
-          if [ -e yarn.lock ]; then
-          yarn install --frozen-lockfile
-          elif [ -e package-lock.json ]; then
-          npm ci
-          else
-          npm i
-          fi
-          GIT_USER=SkyBlockDev npm run deploy
+          deploy_key: ${{ secrets.TOKEN }}
+          # github_token: ${{ secrets.GITHUB_TOKEN }}
+          # personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_dir: ./build
