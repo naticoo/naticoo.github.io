@@ -25,8 +25,8 @@ Then create a mod.ts file with the following code
 //mod.ts
 import { NaticoCommandHandler, NaticoClient } from './deps.ts';
 class BotClient extends NaticoClient {
-	constructor() {
-		super({});
+	constructor(public options?: NaticoClientOptions) {
+		super(options);
 	}
 	// This is the command handler that will be handling your commands
 	commandHandler: NaticoCommandHandler = new NaticoCommandHandler(this, {
@@ -40,7 +40,9 @@ class BotClient extends NaticoClient {
 		return this.login(token);
 	}
 }
-const botClient = new BotClient();
+const botClient = new BotClient({
+	intents: ['Guilds', 'GuildMessages', 'GuildVoiceStates'],
+});
 botClient.start('Insert your token here');
 ```
 
