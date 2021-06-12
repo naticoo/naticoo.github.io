@@ -12,7 +12,7 @@ const FeatureList = [
 		title: 'Flexible',
 		Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
 		description: (
-			<>All natico modules can be extended to make them fir your needs.</>
+			<>All natico modules can be extended to make them for your needs.</>
 		),
 	},
 	{
